@@ -25,11 +25,11 @@ router.post('/save', (req, res) => {
     newBlogPost.save((error) => {
         if (error) {
             res.status(500).json({msg: 'sorry, internal server error'});
-        }else{
-            res.json({
-                msg: 'we recieved data'
-    });
-} 
+            return;
+        }
+        return res.json({
+            msg: "data saved"
+        });
 });
 
 router.get('/name', (req, res) => {
@@ -40,6 +40,6 @@ router.get('/name', (req, res) => {
     res.json(data);
 });
 
+});
 
 module.exports = router;
-});

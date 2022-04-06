@@ -7,14 +7,9 @@ class App extends React.Component{
     body:  ''
   };
 
-  handleChange = (event) => {
-    const target = event.target;
-    const name = target.name;
-    const value = target.value;
-
-    this.setState({
-      [name]: value
-    })
+  handleChange = ({ target}) => {
+    const {name, value} = target;
+    this.setState({ [name]: value });
   };
 
   submit = (event) => {
@@ -27,17 +22,22 @@ class App extends React.Component{
     axios({
       url: '/api/save',
       method: 'POST',
-      //beforeSend: function(xhr){
-      //  xhr.overrideMimeType('application/xml');
-    //  },
       data: payload
     })
     .then(() => {
       console.log('data has been sent');
+      this.resetUserInputs();
     })
     .catch(() => {
       console.log('server error');
     });;
+  };
+
+  resetUserInputs = () => {
+    this.setState({
+      title: '',
+      body: ''
+    })
   }
 
 render(){
