@@ -17,10 +17,19 @@ router.get('/', (req, res) => {
 });
 
 router.post('/save', (req, res) => {
-    console.log('Body: ', req.body);
-    res.json({
-        msg: 'we recieved data'
+    const data = req.body;
+
+    const newBlogPost = new BlogPost(data);
+
+    //.save
+    newBlogPost.save((error) => {
+        if (error) {
+            res.status(500).json({msg: 'sorry, internal server error'});
+        }else{
+            res.json({
+                msg: 'we recieved data'
     });
+} 
 });
 
 router.get('/name', (req, res) => {
@@ -33,3 +42,4 @@ router.get('/name', (req, res) => {
 
 
 module.exports = router;
+});
