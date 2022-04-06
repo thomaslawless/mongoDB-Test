@@ -16,6 +16,13 @@ router.get('/', (req, res) => {
     })
 });
 
+router.post('/save', (req, res) => {
+    console.log('Body: ', req.body);
+    res.json({
+        msg: 'we recieved data'
+    });
+});
+
 router.get('/name', (req, res) => {
     const data = {
         username: 'john',
