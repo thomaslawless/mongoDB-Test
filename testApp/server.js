@@ -24,4 +24,7 @@ app.use(express.urlencoded({extended: false}))
 //http request logger
 app.use(morgan('tiny'));
 app.use('/api',routes);
+app.get('/', function(req, res, next) {
+    
+});
 app.listen(PORT, console.log(`server is starting at ${PORT}`))
