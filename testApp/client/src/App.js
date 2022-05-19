@@ -11,7 +11,7 @@ class App extends React.Component{
   componentDidMount = () => {
     this.getBlogPost();
   }
-
+///??????
   getBlogPost = () => {
     axios.get('/api')
     .then((response) => {
